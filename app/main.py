@@ -10,9 +10,11 @@ import uuid  # Import UUID module
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Unix Fork-Inspired Task Manager")
-@app.get("/")
-def read_root():
-    return {"message": "Task Manager API is running 🚀"}
+# Root route to show a custom message (excluded from Swagger UI)
+@app.get("/", include_in_schema=False)
+def root():
+    return {"message": "Welcome to the Task Manager API! Navigate to /docs for the Swagger UI."}
+
 
 # Dependency to get the database session
 def get_db():
