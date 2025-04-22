@@ -10,9 +10,11 @@ import uuid  # Import UUID module
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Unix Fork-Inspired Task Manager")
-@app.get("/")
-def read_root():
-    return {"message": "Task Manager API is running 🚀"}
+
+# Redirect root to Swagger UI
+@app.get("/", include_in_schema=False)
+def redirect_to_docs():
+    return RedirectResponse(url="/docs")
 
 # Dependency to get the database session
 def get_db():
