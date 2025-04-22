@@ -22,20 +22,89 @@ task-manager/ │ ├── app/ │ ├── init.py │ ├── main.py # F
 
 ---
 
-## ⚙️ Installation & Running Locally
+## ⚙️ Getting Started
 
-1. **Clone the repository**
+### 📦 Requirements
+
+- Python 3.8+
+- pip
+
+### 📥 Installation
+
 ```bash
-git clone https://github.com/AnkitVeerhub/forkSysytem.git
-cd forkSysytem
+git clone https://github.com/AnkitVeerhub/forkSystem.git
+cd forkSystem
 
-2. Create a virtual environment & install dependencies
+🛠️ Set Up Virtual Environment
+
 python -m venv venv
-venv\Scripts\activate   # On Windows
+source venv/bin/activate 
+
+📚 Install Dependencies
+
 pip install -r requirements.txt
 
-3. Run the server
+🚀 Run the App
+
 uvicorn app.main:app --reload
 
-4. Visit Swagger UI
-http://127.0.0.1:8000/docs
+Then open your browser:
+👉 http://127.0.0.1:8000/docs – Interactive Swagger UI
+👉 http://127.0.0.1:8000/redoc – Redoc API docs
+---
+
+🧪 Example Tasks
+You can use the Swagger UI to:
+
+POST /tasks: Create a task
+
+GET /tasks: View all tasks
+
+PATCH /tasks/{id}: Update name or status
+
+DELETE /tasks/{id}: Delete a task
+
+🔧 Development & Contribution
+Coming soon: Add a tests/ folder and expand the CI/CD pipeline using GitHub Actions!
+## ⚙️ Installation & Running Locally
+
+
+💾 Tech Stack
+Python 🐍
+
+FastAPI ⚡
+
+SQLAlchemy 💻
+
+SQLite 🗂️
+
+Swagger / OpenAPI 📘
+
+✅ Sample Endpoints
+POST /tasks → Create a task
+
+GET /tasks → List all tasks
+
+PATCH /tasks/{id} → Update task
+
+DELETE /tasks/{id} → Delete task
+
+📌 Future Improvements
+Add user authentication
+
+Support PostgreSQL / MongoDB
+
+Task deadlines and scheduling
+
+🙌 Acknowledgment
+Built with ❤️ to showcase backend architecture inspired by low-level systems programming (fork() logic).
+
+📌 License
+MIT License. See LICENSE file.
+
+👨‍💻 Author
+Ankit Kumar
+## Connect with Me
+
+- [GitHub](https://github.com/AnkitVeerhub)
+- [LinkedIn](https://www.linkedin.com/in/ankit-codes/)
