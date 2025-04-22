@@ -50,3 +50,14 @@ def update_task(task_id: uuid.UUID, task: schemas.TaskUpdate, db: Session = Depe
     db.commit()
     db.refresh(db_task)
     return db_task
+
+# ✅ Route to delete a task by UUID
+@app.delete("/tasks/{task_id}", response_model=schemas.TaskOut)
+def delete_task(task_id: uuid.UUID, db: Session = Depends(get_db)):
+    db_task = db.query(models.Task).filter(models.Task.id == task_id).first()
+    if db_task is None:
+        raise HTTPException(status_code=404, detail="Task not found")
+
+    db.delete(db_task)
+    db.commit()
+    return db_task
