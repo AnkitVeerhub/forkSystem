@@ -48,6 +48,8 @@ pip install -r requirements.txt
 
 uvicorn app.main:app --reload
 
+For Local Test
+
 Then open your browser:
 👉 http://127.0.0.1:8000/docs – Interactive Swagger UI
 👉 http://127.0.0.1:8000/redoc – Redoc API docs
@@ -64,11 +66,6 @@ PATCH /tasks/{id}: Update name or status
 
 DELETE /tasks/{id}: Delete a task
 
-🔧 Development & Contribution
-Coming soon: Add a tests/ folder and expand the CI/CD pipeline using GitHub Actions!
-## ⚙️ Installation & Running Locally
-
-
 💾 Tech Stack
 Python 🐍
 
@@ -77,6 +74,16 @@ FastAPI ⚡
 SQLAlchemy 💻
 
 SQLite 🗂️
+
+# Deployed API
+
+The backend service is deployed and available at the following URL:
+
+[**Fork System Task Manager API**](https://forksystem-production.up.railway.app/)
+
+You can access the API's Swagger UI documentation by navigating to:
+
+[**Swagger UI**](https://forksystem-production.up.railway.app/docs)
 
 Swagger / OpenAPI 📘
 
