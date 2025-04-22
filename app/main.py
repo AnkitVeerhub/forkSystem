@@ -1,7 +1,7 @@
-from fastapi import FastAPI
-from fastapi.responses import RedirectResponse
-from fastapi import HTTPException
+# app/main.py
+from fastapi import FastAPI, HTTPException
 from sqlalchemy.orm import Session
+from fastapi import Depends
 from . import models, schemas
 from .database import SessionLocal, engine
 import uuid  # Import UUID module
@@ -10,16 +10,9 @@ import uuid  # Import UUID module
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Unix Fork-Inspired Task Manager")
-
-# Root route to show a custom message
-@app.get("/", include_in_schema=False)
-def root():
-    return {"message": "Welcome to the Task Manager API! Navigate to /docs for the Swagger UI."}
-
-# Redirect root to Swagger UI
-@app.get("/docs_redirect", include_in_schema=False)
-def redirect_to_docs():
-    return RedirectResponse(url="/docs")
+@app.get("/")
+def read_root():
+    return {"message": "Task Manager API is running 🚀"}
 
 # Dependency to get the database session
 def get_db():
@@ -61,7 +54,7 @@ def update_task(task_id: uuid.UUID, task: schemas.TaskUpdate, db: Session = Depe
     db.refresh(db_task)
     return db_task
 
-# Route to delete a task by UUID
+# ✅ Route to delete a task by UUID
 @app.delete("/tasks/{task_id}", response_model=schemas.TaskOut)
 def delete_task(task_id: uuid.UUID, db: Session = Depends(get_db)):
     db_task = db.query(models.Task).filter(models.Task.id == task_id).first()
